@@ -1,0 +1,58 @@
+@startuml
+class Cliente {
+    - RG: String
+    - CPF: String
+    - nome: String
+    - endereço: String
+    - profissão: String
+    - entidadesEmpregadoras: List<String>
+    - rendimentos: List<Float>
+    
+    + cadastrar(): void
+    + consultarStatusPedido(): void
+    + cancelarPedido(): void
+    + modificarPedido(): void
+}
+
+class Aluguel {
+    - matrícula: String
+    - ano: int
+    - marca: String
+    - modelo: String
+    - placa: String
+    - status: String (pendente, em análise, aprovado, rejeitado)
+    - cliente: Cliente
+    - contratoCredito: ContratoCredito (opcional)
+    
+    + criarPedido(): void
+    + modificarPedido(): void
+    + enviarParaAnalise(): void
+    + cancelar(): void
+    + consultarStatus(): void
+}
+
+class ContratoCredito {
+    - valor: Float
+    - parcelas: int
+    - taxaJuros: Float
+    - cliente: Cliente
+    
+    + gerarContrato(): void
+    + associarPedido(): void
+}
+
+class Agente {
+    - nome: String
+    - id: String
+    
+    + avaliarPedido(PedidoAluguel pedido): void
+    + modificarPedido(PedidoAluguel pedido): void
+    + aprovarPedido(PedidoAluguel pedido): void
+    + rejeitarPedido(PedidoAluguel pedido): void
+}
+
+Cliente "1" --> "N" ContratoCredito
+Cliente "1" --> "1" Aluguel
+Aluguel --> ContratoCredito : "1"
+Agente --|> Cliente
+@enduml
