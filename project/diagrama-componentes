@@ -1,0 +1,38 @@
+@startuml
+package "Subsistema de Gestão de Pedidos e Contratos" {
+    
+    [ClienteService] --> [PedidoAluguelService]
+    
+    [PedidoAluguelService] --> [AnaliseFinanceiraService]
+    [PedidoAluguelService] --> [AgenteService]
+    
+    [AnaliseFinanceiraService] --> [Banco de Dados]
+    [PedidoAluguelService] --> [Banco de Dados]
+    
+    component ClienteService {
+        [Cadastrar-se]
+        [Gerenciar Pedido de Aluguel]
+    }
+    
+    component PedidoAluguelService {
+        [Analisar Pedido Financeiramente]
+        [Aprovar ou Rejeitar Pedido]
+    }
+    
+    component AgenteService {
+        [Modificar Pedido]
+        [Avaliar Pedido]
+    }
+    
+    component AnaliseFinanceiraService {
+        [Emitir Parecer Financeiro]
+    }
+    
+    database "Banco de Dados" {
+        [Clientes]
+        [PedidosAluguel]
+        [ContratosCredito]
+    }
+    
+}
+@enduml
