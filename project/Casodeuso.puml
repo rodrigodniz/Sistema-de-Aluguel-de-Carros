@@ -4,23 +4,15 @@ actor Agente as A
 
 rectangle "Subsistema de Gestão de Pedidos e Contratos" {
     C --> (Cadastrar-se)
-    C --> (Introduzir Pedido de Aluguel)
-    C --> (Modificar Pedido de Aluguel)
-    C --> (Consultar Pedido de Aluguel)
-    C --> (Cancelar Pedido de Aluguel)
+    C --> (Gerenciar Pedido de Aluguel) : "Introduzir/Modificar/Consultar/Cancelar"
     
-    A --> (Modificar Pedido de Aluguel)
-    A --> (Avaliar Pedido de Aluguel)
-    A --> (Aprovar Pedido de Aluguel)
-    A --> (Rejeitar Pedido de Aluguel)
-
-    (Introduzir Pedido de Aluguel) --> (Analisar Financeiramente)
+    A --> (Gerenciar Pedido de Aluguel) : "Modificar/Avaliar"
+    
+    (Gerenciar Pedido de Aluguel) --> (Analisar Pedido Financeiramente)
+    
+    A --> (Aprovar ou Rejeitar Pedido) 
 }
 
-C --> (Analisar Financeiramente) : "Enviar Pedido"
-A --> (Analisar Financeiramente) : "Verificar Rendimentos"
-
-(Analisar Financeiramente) --> (Aprovar Pedido de Aluguel) : "Parecer Positivo"
-(Analisar Financeiramente) --> (Rejeitar Pedido de Aluguel) : "Parecer Negativo"
+(Analisar Pedido Financeiramente) --> (Aprovar ou Rejeitar Pedido)
 
 @enduml
