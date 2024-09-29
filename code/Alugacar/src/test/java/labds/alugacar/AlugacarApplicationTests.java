@@ -1,13 +1,13 @@
-package AlugaCar.LABDS;
+package labds.alugacar;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class LabdsApplicationTests {
+class AlugacarApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
+    @Test
+    void contextLoads() {
+    }
 
 }

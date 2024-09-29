@@ -1,3 +1,13 @@
+package labds.alugacar.Service;
+
+import labds.alugacar.ORM.Usuario;
+import labds.alugacar.Repository.UsuarioRepository;
+import labds.alugacar.exception.UsuarioNaoEncontradoException;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
+
 @Service
 public class UsuarioService {
     @Autowired
