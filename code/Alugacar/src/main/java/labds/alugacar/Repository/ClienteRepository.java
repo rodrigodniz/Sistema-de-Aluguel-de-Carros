@@ -1,12 +1,10 @@
 package labds.alugacar.Repository;
 
-import labds.alugacar.ORM.Usuario;
+import labds.alugacar.ORM.Cliente;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
-
 @Repository
-public interface UsuarioRepository extends JpaRepository<Usuario, Long> {
+public interface ClienteRepository extends JpaRepository<Cliente, Long> {
 
 }
