@@ -1,0 +1,56 @@
+@startuml
+!define RECTANGLE class
+
+node "Servidor" {
+    RECTANGLE ServidorAluguel {
+        +cadastrarCliente()
+        +gerenciarPedido() // Inclui introduzir, modificar, cancelar
+        +avaliarPedido() // Avaliação e aprovação/rejeição
+    }
+}
+
+node "Banco de Dados" {
+    RECTANGLE DBClientes {
+        +armazenarCliente()
+        +consultarCliente()
+    }
+    RECTANGLE DBPedidos {
+        +armazenarPedido()
+        +consultarPedido()
+        +atualizarPedido()
+        +removerPedido()
+    }
+}
+
+node "Cliente" {
+    RECTANGLE Cliente {
+        +cadastrar()
+        +gerenciarPedido() // Inclui introduzir, modificar, cancelar
+    }
+}
+
+node "Agente" {
+    RECTANGLE Agente {
+        +avaliarPedido() // Avaliação e aprovação/rejeição
+    }
+}
+
+node "Roteador" {
+}
+
+Cliente -down-> Roteador : "Solicitação de cadastro/pedido"
+Roteador -down-> ServidorAluguel : "Encaminhar solicitação"
+ServidorAluguel -down-> DBClientes : "Consulta/Armazenamento de cliente"
+ServidorAluguel -down-> DBPedidos : "Consulta/Armazenamento de pedidos"
+DBClientes -down-> ServidorAluguel : "Resultado"
+DBPedidos -down-> ServidorAluguel : "Resultado"
+ServidorAluguel -down-> Roteador : "Resposta"
+Roteador -down-> Cliente : "Resultado"
+
+Agente -down-> Roteador : "Solicitação de avaliação"
+Roteador -down-> ServidorAluguel : "Encaminhar solicitação"
+ServidorAluguel -down-> DBPedidos : "Atualização de pedido"
+DBPedidos -down-> ServidorAluguel : "Resultado"
+ServidorAluguel -down-> Roteador : "Resposta"
+Roteador -down-> Agente : "Resultado"
+@enduml
