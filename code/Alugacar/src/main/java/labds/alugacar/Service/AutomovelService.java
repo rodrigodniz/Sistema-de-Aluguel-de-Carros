@@ -40,17 +40,21 @@ public class AutomovelService {
     }
 
     private void Register(Scanner sc) {
+        sc.nextLine();
 
         System.out.println("Digite as informações do automóvel:");
 
         System.out.println("Modelo: ");
-        String modelo = sc.next();
+        String modelo = sc.nextLine();
+
         System.out.println("Marca: ");
-        String marca = sc.next();
+        String marca = sc.nextLine();
+
         System.out.println("Ano: ");
-        String ano = sc.next();
-        System.out.println("Placa");
-        String placa = sc.next();
+        String ano = sc.nextLine();
+
+        System.out.println("Placa: ");
+        String placa = sc.nextLine();
 
         Automovel automovel = new Automovel(modelo, marca, ano, placa);
         automovelRepository.save(automovel);

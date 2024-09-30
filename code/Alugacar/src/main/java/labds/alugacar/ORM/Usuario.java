@@ -16,19 +16,17 @@ public class Usuario {
     private String cpf;
     private String endereco;
 
-        @Deprecated
-        public Usuario(){
+    @Deprecated
+    public Usuario() {
+    }
 
-        }
+    public Usuario(String nome, String rg, String cpf, String endereco) {
+        this.nome = nome;
+        this.rg = rg;
+        this.cpf = cpf;
+        this.endereco = endereco;
+    }
 
-        public Usuario(String nome, String rg, String cpf, String endereco) {
-            this.nome = nome;
-            this.rg = rg;
-            this.cpf = cpf;
-            this.endereco = endereco;
-
-
-        }
     public Long getId() {
         return id;
     }
@@ -69,4 +67,14 @@ public class Usuario {
         this.endereco = endereco;
     }
 
+    @Override
+    public String toString() {
+        return "Usuario{" +
+                "id=" + id +
+                ", nome='" + nome + '\'' +
+                ", rg='" + rg + '\'' +
+                ", cpf='" + cpf + '\'' +
+                ", endereco='" + endereco + '\'' +
+                '}';
+    }
 }

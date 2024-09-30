@@ -40,7 +40,7 @@ public class Pedido {
 
     @ManyToOne
     @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
+    private Usuario usuario;
 
     @OneToOne
     @JoinColumn(name = "automovel_id")
@@ -55,9 +55,9 @@ public class Pedido {
 
     }
 
-    public Pedido(Long id, Cliente cliente, Automovel automovel) {
+    public Pedido(Long id, Usuario usuario, Automovel automovel) {
         this.id = id;
-        this.cliente = cliente;
+        this.usuario = usuario;
         this.automovel = automovel;
         this.dataPedido = LocalDate.now();
     }
@@ -70,12 +70,12 @@ public class Pedido {
         this.automovel = automovel;
     }
 
-    public Cliente getCliente() {
-        return cliente;
+    public Usuario getCliente() {
+        return usuario;
     }
 
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+    public void setCliente(Usuario usuario) {
+        this.usuario = usuario;
     }
 
 }

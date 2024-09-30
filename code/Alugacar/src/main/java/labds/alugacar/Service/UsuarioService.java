@@ -30,6 +30,7 @@ public class UsuarioService {
             System.out.println("0 - Voltar");
             System.out.println("1 - Cadastrar usuario: ");
             System.out.println("2 - Excluir usuario:");
+            System.out.println("3 - Listar usuários");
 
             int opcao = sc.nextInt();
 
@@ -39,6 +40,9 @@ public class UsuarioService {
                     break;
                 case 2:
                     this.Delete(sc);
+                    break;
+                case 3:
+                    this.Show(sc);
                     break;
                 default:
                     isTrue = false;
@@ -75,9 +79,17 @@ public class UsuarioService {
     }
 
 
-    public List<Usuario> Show(Scanner sc) {
-        return usuarioRepository.findAll();
+    public void Show(Scanner sc) {
+        List<Usuario> usuarios = usuarioRepository.findAll();
+        if (usuarios.isEmpty()) {
+            System.out.println("Nenhum usuário cadastrado.");
+        } else {
+            for (Usuario usuario : usuarios) {
+                System.out.println(usuario);
+            }
+        }
     }
+
 
     public void Delete(Scanner sc) {
         System.out.println("Digite o id do usuario: ");
