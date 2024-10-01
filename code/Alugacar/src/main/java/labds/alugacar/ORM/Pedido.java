@@ -38,8 +38,8 @@ public class Pedido {
     @Id
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "cliente_id")
+    @OneToOne
+    @JoinColumn(name = "usuario_id")
     private Usuario usuario;
 
     @OneToOne
@@ -78,5 +78,15 @@ public class Pedido {
         this.usuario = usuario;
     }
 
+    @Override
+    public String toString() {
+        return "Pedido{" +
+                "automovel=" + automovel +
+                ", id=" + id +
+                ", usuario=" + usuario +
+                ", status='" + status + '\'' +
+                ", dataPedido=" + dataPedido +
+                '}';
+    }
 }
 
